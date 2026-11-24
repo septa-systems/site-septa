@@ -4,12 +4,29 @@ import Base from "../layouts/Base.astro";
 
 <Base titulo="Página não encontrada">
   <section class="secao">
-    <div class="container">
+    <div class="container erro">
+      <span class="chamada">Erro 404</span>
       <h1>Página não encontrada</h1>
-      <p>O endereço pode ter mudado ou estar errado.</p>
-      <a class="botao" href="/">
+      <p class="lead">O endereço pode ter mudado ou estar errado.</p>
+      <a class="botao botao--principal" href="/">
         Voltar para o início
       </a>
     </div>
   </section>
 </Base>
+
+<style>
+  .erro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    min-height: 50vh;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    font-weight: 800;
+  }
+</style>

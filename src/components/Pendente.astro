@@ -1,0 +1,20 @@
+---
+// Mostra um valor do site.ts. Se ainda for PENDENTE, aparece "a definir"
+// e o build de produção falha (CT06).
+import { ehPendente } from "../config/site";
+
+interface Props {
+  valor: string;
+  texto?: string;
+}
+
+const { valor, texto = "a definir" } = Astro.props;
+---
+
+{ehPendente(valor) ? (
+  <span class="pendente" data-pendente>
+    {texto}
+  </span>
+) : (
+  <>{valor}</>
+)}

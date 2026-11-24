@@ -1,0 +1,117 @@
+---
+import Icone from "./Icone.astro";
+import { SERVICOS } from "../config/site";
+---
+
+<section id="servicos" class="secao">
+  <div class="container">
+    <div class="cabeca">
+      <span class="chamada">Serviços</span>
+      <h2>Tudo que o seu negócio precisa de tecnologia, num lugar só</h2>
+      <p class="lead">
+        Você não precisa contratar um programador. A gente vira o seu setor de tecnologia.
+      </p>
+    </div>
+    <div class="servicos">
+      {SERVICOS.map((s) => (
+        <article class="servico inclina">
+          <div class="servico__icone">
+            <Icone nome={s.icone} />
+          </div>
+          <h3>{s.titulo}</h3>
+          <p>{s.texto}</p>
+          <ul>
+            {s.tags.map((t) => (
+              <li>{t}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .servicos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 1rem;
+  }
+
+  .servico {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.625rem;
+    border-radius: 18px;
+    border: 1px solid var(--cor-borda);
+    background: linear-gradient(160deg, var(--cor-superficie-2), var(--cor-superficie) 60%);
+    transform-style: preserve-3d;
+    transition:
+      transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+      border-color 0.2s ease;
+  }
+
+  .servico:hover {
+    border-color: var(--cor-destaque-linha);
+  }
+
+  .servico__icone {
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    background: var(--cor-destaque-suave);
+    color: var(--cor-destaque);
+    box-shadow: 0 0 0 1px var(--cor-destaque-linha) inset;
+    transform: translateZ(36px);
+  }
+
+  h3 {
+    transform: translateZ(24px);
+  }
+
+  p {
+    color: var(--cor-texto-suave);
+    font-size: 0.9375rem;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin: 0.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 99px;
+    border: 1px solid var(--cor-borda);
+    color: #c9cece;
+  }
+
+  /* brilho que segue o mouse (o JS da issue #5 preenche --mx/--my) */
+  .inclina::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 0%),
+      rgba(45, 212, 191, 0.16),
+      transparent 45%
+    );
+  }
+
+  .inclina:hover::after {
+    opacity: 1;
+  }
+</style>

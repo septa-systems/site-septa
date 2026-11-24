@@ -1,0 +1,64 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../config/site";
+---
+
+<Base
+  titulo="Política de privacidade"
+  descricao="Como o site da Septa Systems trata os seus dados: ele não guarda nenhum."
+>
+  <section class="secao">
+    <div class="container texto">
+      <span class="chamada">Política de privacidade</span>
+      <h1>Este site não guarda os seus dados</h1>
+      <p class="lead">Atualizada em 24 de novembro de 2026.</p>
+
+      <h2>O que acontece quando você usa o formulário</h2>
+      <p>
+        O formulário de contato não envia nada para a gente. Ele só monta uma mensagem com o que
+        você escreveu e abre o seu WhatsApp. Quem decide mandar é você, e a conversa segue no
+        WhatsApp, como qualquer outra.
+      </p>
+
+      <h2>Cookies e rastreamento</h2>
+      <p>
+        O site não usa cookies, não tem login e não usa ferramentas de anúncio. Se um dia medirmos
+        visitas, será com uma ferramenta que não usa cookies nem identifica você.
+      </p>
+
+      <h2>Conversas pelo WhatsApp e e-mail</h2>
+      <p>
+        O que você mandar pelo WhatsApp ou e-mail usamos só para responder e preparar uma proposta.
+        Não vendemos nem passamos esses dados para ninguém. Se quiser que a gente apague a conversa,
+        é só pedir.
+      </p>
+
+      <h2>Fale com a gente</h2>
+      <p>Dúvidas sobre os seus dados: {SITE.email}.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .texto {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 760px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.05;
+  }
+
+  h2 {
+    font-size: 1.375rem;
+    margin-top: 1.25rem;
+  }
+
+  p {
+    color: var(--cor-texto-suave);
+  }
+</style>

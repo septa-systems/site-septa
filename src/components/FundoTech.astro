@@ -1,0 +1,90 @@
+---
+// Fundo fixo atrás da página: brilhos, malha de pontos e faixa de varredura.
+// A rede de conexões (canvas) entra na issue #5.
+---
+
+<div class="fundo" aria-hidden="true">
+  <span class="fundo__luz fundo__luz--1"></span>
+  <span class="fundo__luz fundo__luz--2"></span>
+  <span class="fundo__varre"></span>
+</div>
+
+<style>
+  .fundo {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    background:
+      radial-gradient(1100px 650px at 85% -5%, rgba(45, 212, 191, 0.16), transparent 60%),
+      radial-gradient(900px 600px at -10% 45%, rgba(56, 189, 248, 0.11), transparent 60%),
+      radial-gradient(1000px 700px at 60% 115%, rgba(45, 212, 191, 0.13), transparent 60%),
+      var(--cor-fundo);
+  }
+
+  .fundo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1.5px);
+    background-size: 26px 26px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 85%);
+  }
+
+  .fundo__luz {
+    position: absolute;
+    width: 60vmax;
+    height: 60vmax;
+    border-radius: 50%;
+    opacity: 0.55;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.22), transparent 62%);
+    animation: deriva 26s ease-in-out infinite alternate;
+  }
+
+  .fundo__luz--1 {
+    top: -20vmax;
+    left: -15vmax;
+  }
+
+  .fundo__luz--2 {
+    bottom: -25vmax;
+    right: -20vmax;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.18), transparent 62%);
+    animation-duration: 34s;
+    animation-direction: alternate-reverse;
+  }
+
+  .fundo__varre {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 160px;
+    top: -160px;
+    background: linear-gradient(to bottom, transparent, rgba(45, 212, 191, 0.06), transparent);
+    animation: varre 9s linear infinite;
+  }
+
+  @keyframes deriva {
+    to {
+      transform: translate(18vmax, 12vmax) scale(1.15);
+    }
+  }
+
+  @keyframes varre {
+    to {
+      transform: translateY(calc(100vh + 160px));
+    }
+  }
+
+  /* menos movimento: continua vivo, só mais devagar (ADR 0001) */
+  @media (prefers-reduced-motion: reduce) {
+    .fundo__luz {
+      animation-duration: 60s;
+    }
+
+    .fundo__varre {
+      animation-duration: 20s;
+    }
+  }
+</style>

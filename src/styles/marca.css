@@ -1,15 +1,23 @@
-/* Marca do projeto: troque só este arquivo para mudar cores e fontes.
-   Padrão: cores da Septa Systems. */
+/* Marca do site da Septa (ADR 0002): fundo escuro, verde principal, azul de apoio.
+   Lexend nos títulos, Inter no texto, Outfit só no nome SEPTA do logo. */
 :root {
-  --cor-fundo: #ffffff;
-  --cor-texto: #0a0a0a;
-  --cor-texto-suave: #525252;
-  --cor-borda: #e5e5e5;
-  --cor-destaque: #0d9488; /* verde Septa para fundo claro */
-  --cor-destaque-texto: #ffffff;
-  --cor-fundo-escuro: #000000;
-  --cor-texto-escuro: #fafafa;
+  color-scheme: dark;
 
-  --fonte-titulo: "Outfit Variable", system-ui, sans-serif;
-  --fonte-texto: "Inter Variable", system-ui, sans-serif;
+  --cor-fundo: #01080a;
+  --cor-superficie: rgba(10, 20, 22, 0.72);
+  --cor-superficie-2: rgba(18, 30, 32, 0.85);
+  --cor-borda: rgba(255, 255, 255, 0.1);
+  --cor-texto: #f5f5f5;
+  --cor-texto-suave: #a3a8a8;
+  --cor-destaque: #2dd4bf;
+  --cor-destaque-texto: #03201c;
+  --cor-destaque-suave: rgba(45, 212, 191, 0.12);
+  --cor-destaque-linha: rgba(45, 212, 191, 0.35);
+  --cor-apoio: #38bdf8;
+  --cor-ok: #4ade80;
+  --cor-alerta: #fbbf24;
+
+  --fonte-titulo: "Lexend Variable", "Segoe UI", system-ui, sans-serif;
+  --fonte-texto: "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fonte-logo: "Outfit Variable", "Segoe UI", system-ui, sans-serif;
 }

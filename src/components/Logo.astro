@@ -1,0 +1,48 @@
+---
+import Simbolo from "./Simbolo.astro";
+
+interface Props {
+  tamanho?: string;
+}
+
+const { tamanho = "1.375rem" } = Astro.props;
+---
+
+<span class="logo" style={`font-size:${tamanho}`}>
+  <Simbolo class="logo__simbolo" />
+  <span class="logo__nome">
+    SEPTA<em>Systems</em>
+  </span>
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    white-space: nowrap;
+    line-height: 1;
+    color: #e6f2f0;
+  }
+
+  .logo :global(.logo__simbolo) {
+    width: 1.45em;
+    height: 1.45em;
+    flex: none;
+  }
+
+  .logo__nome {
+    font-family: var(--fonte-logo);
+    font-weight: 600;
+    letter-spacing: 0.07em;
+  }
+
+  .logo__nome em {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 0.62em;
+    letter-spacing: 0.02em;
+    margin-left: 0.3em;
+    opacity: 0.85;
+  }
+</style>

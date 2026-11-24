@@ -1,0 +1,22 @@
+---
+// O símbolo da Septa: 6 pontos em volta de um ponto central (o cliente).
+interface Props {
+  class?: string;
+  tamanho?: number | string;
+}
+
+const { class: classe, tamanho } = Astro.props;
+const PONTOS = [0, 1, 2, 3, 4, 5].map((i) => {
+  const a = -Math.PI / 2 + (i * Math.PI) / 3;
+  return { x: +(Math.cos(a) * 15).toFixed(2), y: +(Math.sin(a) * 15).toFixed(2) };
+});
+---
+
+<svg class={classe} width={tamanho} height={tamanho} viewBox="-24 -24 48 48" aria-hidden="true">
+  <circle cx="0" cy="0" r="6" fill="var(--cor-destaque)"></circle>
+  <g fill="currentColor">
+    {PONTOS.map((p) => (
+      <circle cx={p.x} cy={p.y} r="4.5" />
+    ))}
+  </g>
+</svg>

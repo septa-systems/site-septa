@@ -1,0 +1,77 @@
+---
+import { PASSOS } from "../config/site";
+---
+
+<section id="como" class="secao">
+  <div class="container">
+    <div class="cabeca">
+      <span class="chamada">Como funciona</span>
+      <h2>Do primeiro oi ao sistema no ar</h2>
+    </div>
+    <ol class="passos">
+      {PASSOS.map((p, i) => (
+        <li class="passo">
+          <span class="passo__n">{i + 1}</span>
+          <h3>{p.titulo}</h3>
+          <p>{p.texto}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .passos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .passo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: 1.375rem;
+    border-radius: 18px;
+    border: 1px solid var(--cor-borda);
+    background: var(--cor-superficie);
+    min-width: 0;
+  }
+
+  .passo__n {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font: 700 1rem var(--fonte-titulo);
+    color: var(--cor-destaque);
+    border: 1.5px solid var(--cor-destaque-linha);
+    background: radial-gradient(
+      circle at 35% 30%,
+      rgba(45, 212, 191, 0.35),
+      rgba(45, 212, 191, 0.05) 60%
+    );
+    box-shadow: 0 0 18px rgba(45, 212, 191, 0.18);
+  }
+
+  p {
+    color: var(--cor-texto-suave);
+    font-size: 0.9375rem;
+  }
+
+  @media (max-width: 900px) {
+    .passos {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .passos {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
