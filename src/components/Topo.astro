@@ -56,7 +56,12 @@ import { MENU } from "../config/site";
     color: var(--cor-texto);
   }
 
+  /* celular: sem menu, o logo fica no meio do cabeçalho */
   @media (max-width: 860px) {
+    .topo__linha {
+      justify-content: center;
+    }
+
     .topo nav {
       display: none;
     }
