@@ -42,9 +42,34 @@ import { SITE } from "../config/site";
       aria-label={`Logo da ${SITE.nome}: seis pontos ao redor de um ponto central`}
     >
       <Simbolo class="orbe__plano" />
+      <span class="orbe__dica" aria-hidden="true">
+        Arraste para girar
+      </span>
     </div>
   </div>
 </section>
+
+<script>
+  // O 3D só baixa depois que a página carregou (ADR 0001): no primeiro movimento
+  // da pessoa ou 3 s depois. Até lá aparece o logo plano, do mesmo tamanho.
+  const caixa = document.getElementById("logo3d");
+  if (caixa) {
+    const EVENTOS = ["pointermove", "pointerdown", "scroll", "keydown", "touchstart"];
+    let feito = false;
+    const carrega = () => {
+      if (feito) return;
+      feito = true;
+      EVENTOS.forEach((ev) => removeEventListener(ev, carrega));
+      import("../scripts/logo3d").then(({ iniciaLogo3d }) => iniciaLogo3d(caixa));
+    };
+    const espera = () => {
+      EVENTOS.forEach((ev) => addEventListener(ev, carrega, { once: true, passive: true }));
+      setTimeout(carrega, 3000);
+    };
+    if (document.readyState === "complete") espera();
+    else addEventListener("load", espera, { once: true });
+  }
+</script>
 
 <style>
   .abertura {
@@ -172,6 +197,45 @@ import { SITE } from "../config/site";
     display: grid;
     place-items: center;
     color: #e6f2f0;
+  }
+
+  /* com 3D: o canvas ocupa a caixa e o logo plano sai */
+  .orbe:global(.orbe--3d) {
+    touch-action: pan-y;
+    cursor: grab;
+  }
+
+  .orbe:global(.orbe--3d):active {
+    cursor: grabbing;
+  }
+
+  .orbe :global(canvas) {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
+
+  .orbe:global(.orbe--3d) :global(.orbe__plano) {
+    display: none;
+  }
+
+  .orbe__dica {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 4%;
+    transform: translateX(-50%);
+    font-size: 12.5px;
+    color: var(--cor-texto-suave);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .orbe:global(.orbe--3d) .orbe__dica {
+    display: block;
   }
 
   .orbe :global(.orbe__plano) {

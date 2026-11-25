@@ -555,6 +555,14 @@ import Simbolo from "./Simbolo.astro";
   </div>
 </section>
 
+<script>
+  import { iniciaPainel } from "../scripts/painel";
+  const sec = document.getElementById("sistemas");
+  const palco = document.getElementById("palco");
+  const cena = document.getElementById("cena");
+  if (sec && palco && cena) iniciaPainel(sec, palco, cena);
+</script>
+
 <style>
   /* ===== painel do sistema (dashboard de exemplo) ===== */
   .vitrine::before {
@@ -1041,8 +1049,13 @@ import Simbolo from "./Simbolo.astro";
     .c1 {
       right: 8px;
     }
+    /* o chip de baixo sai do painel: a legenda desce para não ficar por baixo dele */
     .c3 {
       right: 8px;
+      transform: translateZ(40px);
+    }
+    .exemplo {
+      margin-top: 72px;
     }
     .hor {
       grid-template-columns: 44px 1fr;
