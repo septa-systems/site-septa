@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import FundoTech from "../components/FundoTech.astro";
 import Topo from "../components/Topo.astro";
 import Rodape from "../components/Rodape.astro";
 import { SITE } from "../config/site";
@@ -11,16 +12,29 @@ interface Props {
 }
 
 const { titulo, descricao = SITE.descricao, imagem = "/compartilhar.png" } = Astro.props;
-const tituloCompleto = titulo ? `${titulo} | ${SITE.nome}` : SITE.nome;
+const tituloCompleto = titulo ? `${titulo} | ${SITE.nome}` : `${SITE.nome} · ${SITE.slogan}`;
 const urlCanonica = new URL(Astro.url.pathname, Astro.site ?? SITE.url);
 const urlImagem = new URL(imagem, Astro.site ?? SITE.url);
+
+const organizacao = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE.nome,
+  slogan: SITE.slogan,
+  description: SITE.descricao,
+  url: SITE.url,
+  logo: new URL("/favicon.svg", SITE.url).href,
+  email: SITE.email,
+  sameAs: [`https://instagram.com/${SITE.instagram}`],
+};
 ---
 
 <!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#01080a" />
     <title>{tituloCompleto}</title>
     <meta name="description" content={descricao} />
     <link rel="canonical" href={urlCanonica} />
@@ -36,11 +50,14 @@ const urlImagem = new URL(imagem, Astro.site ?? SITE.url);
     <meta property="og:url" content={urlCanonica} />
     <meta property="og:image" content={urlImagem} />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizacao)} />
   </head>
   <body>
     <a class="pular-conteudo" href="#conteudo">
       Pular para o conteúdo
     </a>
+    <FundoTech />
     <Topo />
     <main id="conteudo">
       <slot />
@@ -48,3 +65,15 @@ const urlImagem = new URL(imagem, Astro.site ?? SITE.url);
     <Rodape />
   </body>
 </html>
+
+<style>
+  /* faixa do topo do celular (notch) com a cor do fundo */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 30;
+    background: var(--cor-fundo);
+  }
+</style>

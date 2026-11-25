@@ -1,0 +1,108 @@
+---
+import Logo from "./Logo.astro";
+import { PROJETOS } from "../config/site";
+---
+
+<section id="portfolio" class="secao">
+  <div class="container">
+    <div class="cabeca">
+      <span class="chamada">Portfólio</span>
+      <h2>Projetos</h2>
+      <p class="lead">Os primeiros trabalhos entram aqui conforme forem entregues.</p>
+    </div>
+    <div class="projetos">
+      {PROJETOS.map((p, i) => (
+        <article class="projeto inclina">
+          {p.vazio ? (
+            <div class="projeto__capa projeto__capa--vazia">Projeto {i + 1}</div>
+          ) : (
+            <div class="projeto__capa">
+              <Logo tamanho="1.625rem" />
+            </div>
+          )}
+          <div class="projeto__info">
+            <h3>{p.titulo}</h3>
+            <span>{p.tipo}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projetos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .projeto {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    border: 1px solid var(--cor-borda);
+    background: var(--cor-superficie);
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .projeto__capa {
+    aspect-ratio: 16 / 10;
+    max-width: 100%;
+    display: grid;
+    place-items: center;
+    border-bottom: 1px solid var(--cor-borda);
+    background:
+      radial-gradient(circle at 50% 60%, rgba(45, 212, 191, 0.16), transparent 60%),
+      var(--cor-superficie-2);
+  }
+
+  .projeto__capa--vazia {
+    color: var(--cor-texto-suave);
+    font-size: 0.875rem;
+    background: repeating-linear-gradient(
+      135deg,
+      var(--cor-superficie-2) 0 12px,
+      rgba(14, 17, 17, 0.85) 12px 24px
+    );
+  }
+
+  .projeto__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.125rem 1.25rem;
+  }
+
+  .projeto__info span {
+    font-size: 0.8125rem;
+    color: var(--cor-texto-suave);
+  }
+
+  .inclina::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 0%),
+      rgba(45, 212, 191, 0.16),
+      transparent 45%
+    );
+  }
+
+  .inclina:hover::after {
+    opacity: 1;
+  }
+
+  @media (max-width: 900px) {
+    .projetos {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

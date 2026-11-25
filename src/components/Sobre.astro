@@ -1,0 +1,175 @@
+---
+import Simbolo from "./Simbolo.astro";
+import { VALORES } from "../config/site";
+---
+
+<section id="sobre" class="secao">
+  <div class="container sobre">
+    <div class="sobre__marca" aria-hidden="true">
+      <span class="anel anel--b"></span>
+      <span class="anel"></span>
+      <span class="anel anel--c"></span>
+      <Simbolo class="sobre__simbolo" />
+    </div>
+    <div class="sobre__texto">
+      <span class="chamada">Sobre nós</span>
+      <h2>Somos 7, e o cliente fica no centro</h2>
+      <p>
+        A Septa nasceu de sete amigos que programam, vendem e criam juntos. Os sete pontos do nosso
+        logo somos nós, e o do meio é você. Nossa missão é ser o time de tecnologia que todo negócio
+        precisa, mas não tem.
+      </p>
+      <div class="valores">
+        {VALORES.map((v) => (
+          <div class="valor">
+            <b>{v.titulo}</b>
+            <span>{v.texto}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sobre {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  .sobre__marca {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    max-width: 100%;
+    border-radius: 28px;
+    border: 1px solid var(--cor-borda);
+    background:
+      radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.2), transparent 62%),
+      var(--cor-superficie);
+    color: #e6f2f0;
+    perspective: 1600px;
+  }
+
+  .sobre__marca :global(.sobre__simbolo) {
+    position: relative;
+    z-index: 1;
+    width: 46%;
+    height: 46%;
+    filter: drop-shadow(0 0 24px rgba(45, 212, 191, 0.35));
+  }
+
+  .anel {
+    position: absolute;
+    inset: 20%;
+    border-radius: 50%;
+    border: 1.5px solid var(--cor-destaque-linha);
+    animation: gira1 16s linear infinite;
+  }
+
+  .anel--b {
+    inset: 12%;
+    border-style: dashed;
+    border-color: rgba(255, 255, 255, 0.14);
+    animation: gira2 26s linear infinite;
+  }
+
+  .anel--c {
+    inset: 28%;
+    border-color: rgba(45, 212, 191, 0.2);
+    animation: gira3 11s linear infinite;
+  }
+
+  @keyframes gira1 {
+    from {
+      transform: rotateX(72deg) rotateZ(0);
+    }
+    to {
+      transform: rotateX(72deg) rotateZ(360deg);
+    }
+  }
+
+  @keyframes gira2 {
+    from {
+      transform: rotateX(62deg) rotateY(24deg) rotateZ(0);
+    }
+    to {
+      transform: rotateX(62deg) rotateY(24deg) rotateZ(-360deg);
+    }
+  }
+
+  @keyframes gira3 {
+    from {
+      transform: rotateY(70deg) rotateZ(0);
+    }
+    to {
+      transform: rotateY(70deg) rotateZ(360deg);
+    }
+  }
+
+  .sobre__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-width: 0;
+  }
+
+  .sobre__texto > p {
+    color: var(--cor-texto-suave);
+    font-size: 1.0625rem;
+  }
+
+  .valores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .valor {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem 1.125rem;
+    border-radius: 14px;
+    border: 1px solid var(--cor-borda);
+    background: var(--cor-superficie);
+  }
+
+  .valor b {
+    font: 600 1.0625rem var(--fonte-titulo);
+  }
+
+  .valor span {
+    font-size: 0.875rem;
+    color: var(--cor-texto-suave);
+  }
+
+  @media (max-width: 860px) {
+    .sobre {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .valores {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .anel {
+      animation-duration: 40s;
+    }
+
+    .anel--b {
+      animation-duration: 60s;
+    }
+
+    .anel--c {
+      animation-duration: 30s;
+    }
+  }
+</style>

@@ -1,0 +1,202 @@
+---
+import Icone from "./Icone.astro";
+import Simbolo from "./Simbolo.astro";
+import { SITE } from "../config/site";
+---
+
+<section class="abertura">
+  <div class="abertura__chao" aria-hidden="true"></div>
+  <div class="container abertura__grade">
+    <div class="abertura__texto">
+      <span class="chamada">Estúdio de tecnologia</span>
+      <h1>
+        O time de tecnologia
+        <br />
+        <span>do seu negócio.</span>
+      </h1>
+      <p class="lead">
+        Sites, sistemas e automações sob medida. Você cuida do negócio,{" "}
+        <b>a gente cuida da tecnologia.</b>
+      </p>
+      <div class="abertura__botoes">
+        <a href="#contato" class="botao botao--principal">
+          <Icone nome="whatsapp" tamanho={20} />
+          Fale com a gente
+        </a>
+        <a href="#servicos" class="botao botao--borda">
+          Conheça nossos serviços
+        </a>
+      </div>
+      <div class="abertura__selos">
+        <span>Funciona no celular</span>
+        <span>Aparece no Google</span>
+        <span>Suporte de verdade</span>
+      </div>
+    </div>
+
+    <!-- Logo 3D (issue #5). Sem WebGL ou antes de carregar, fica o logo plano. -->
+    <div
+      class="orbe"
+      id="logo3d"
+      role="img"
+      aria-label={`Logo da ${SITE.nome}: seis pontos ao redor de um ponto central`}
+    >
+      <Simbolo class="orbe__plano" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .abertura {
+    position: relative;
+    overflow: hidden;
+    padding-block: 3.5rem 7rem;
+  }
+
+  .abertura::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 38% 55% at 76% 45%, rgba(45, 212, 191, 0.2), transparent 70%),
+      radial-gradient(ellipse 30% 40% at 0% 100%, rgba(45, 212, 191, 0.1), transparent 70%);
+  }
+
+  .abertura__chao {
+    position: absolute;
+    left: -30%;
+    right: -30%;
+    bottom: -6%;
+    height: 48%;
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--cor-destaque-linha) 1px, transparent 1px),
+      linear-gradient(90deg, var(--cor-destaque-linha) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity: 0.45;
+    transform: perspective(420px) rotateX(64deg);
+    transform-origin: 50% 100%;
+    mask-image: linear-gradient(to top, #000 0%, transparent 75%);
+    animation: anda 2.8s linear infinite;
+  }
+
+  @keyframes anda {
+    to {
+      background-position: 0 64px;
+    }
+  }
+
+  .abertura__grade {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .abertura__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 0;
+    animation: sobe 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  @keyframes sobe {
+    from {
+      transform: translateY(18px);
+      opacity: 0.2;
+    }
+  }
+
+  h1 {
+    font-size: clamp(2.625rem, 6.6vw, 5rem);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+  }
+
+  h1 span {
+    background: linear-gradient(100deg, #5eead4, var(--cor-destaque) 45%, #0ea5a0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lead {
+    font-size: 1.1875rem;
+  }
+
+  .lead b {
+    color: var(--cor-texto);
+    font-weight: 600;
+  }
+
+  .abertura__botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+  }
+
+  .abertura__selos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.125rem;
+    font-size: 0.875rem;
+    color: var(--cor-texto-suave);
+  }
+
+  .abertura__selos span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .abertura__selos span::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cor-destaque);
+    box-shadow: 0 0 10px var(--cor-destaque);
+  }
+
+  .orbe {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 1 / 1;
+    justify-self: center;
+    display: grid;
+    place-items: center;
+    color: #e6f2f0;
+  }
+
+  .orbe :global(.orbe__plano) {
+    width: 52%;
+    height: 52%;
+    filter: drop-shadow(0 0 40px rgba(45, 212, 191, 0.45));
+  }
+
+  @media (max-width: 920px) {
+    .abertura__grade {
+      grid-template-columns: 1fr;
+    }
+
+    .orbe {
+      max-width: 400px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .abertura__texto {
+      animation: none;
+    }
+
+    .abertura__chao {
+      animation-duration: 8s;
+    }
+  }
+</style>
