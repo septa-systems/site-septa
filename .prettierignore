@@ -3,3 +3,6 @@ dist/
 node_modules/
 package-lock.json
 docs/projeto/rascunho-visual.html
+
+# fonte da imagem de compartilhamento (gerada à mão)
+docs/projeto/compartilhar/
