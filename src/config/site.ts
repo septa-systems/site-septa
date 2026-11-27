@@ -14,8 +14,8 @@ export const SITE = {
   whatsapp: PENDENTE, // só números, com DDI e DDD. Ex.: 5515999999999
   whatsappVisivel: PENDENTE, // como aparece na tela. Ex.: (15) 99999-9999
   email: "contato.septasystems@gmail.com", // vira contato@septasystems.com.br com o domínio
-  instagram: "septasystems", // confirmar o @ (PRD, dúvida 5)
-  cnpj: PENDENTE,
+  instagram: "septa.systems",
+  cnpj: "", // vazio = não aparece no rodapé. Preencher quando abrir a empresa.
 };
 
 export const linkWhatsApp = (mensagem: string) =>
