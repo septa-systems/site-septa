@@ -125,8 +125,8 @@ export const VALORES = [
 ];
 
 // Preço e prazo do FAQ: PRD, dúvidas 2 e 3.
-export const PRECO_SITE_A_PARTIR = PENDENTE; // ex.: "R$ 1.490"
-export const PRAZO_SITE = PENDENTE; // ex.: "2 a 3 semanas"
+export const PRECO_SITE_A_PARTIR = "R$ 790"; // página simples; sistemas e automações sob consulta
+export const PRAZO_SITE = "1 a 2 semanas";
 
 export const SERVICOS_CONTATO = [
   "Site institucional",
