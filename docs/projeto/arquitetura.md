@@ -70,7 +70,7 @@ classDiagram
   }
 ```
 
-`whatsapp`, `cnpj` e os preços do FAQ começam como `PENDENTE`. O build de produção falha enquanto existir algum (CT06).
+`whatsapp` e os preços do FAQ começam como `PENDENTE`; `cnpj` vazio não aparece no rodapé. O build de produção falha enquanto existir algum (CT06).
 
 ## 6. Fluxos principais
 

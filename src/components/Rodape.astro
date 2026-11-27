@@ -1,6 +1,5 @@
 ---
 import Logo from "./Logo.astro";
-import Pendente from "./Pendente.astro";
 import { SITE } from "../config/site";
 
 const ano = new Date().getFullYear();
@@ -16,7 +15,8 @@ const ano = new Date().getFullYear();
       <a href="/privacidade">Política de privacidade</a>
     </nav>
     <span>
-      © {ano} {SITE.nome} · CNPJ <Pendente valor={SITE.cnpj} texto="quando abrir" />
+      © {ano} {SITE.nome}
+      {SITE.cnpj && ` · CNPJ ${SITE.cnpj}`}
     </span>
   </div>
 </footer>
