@@ -1,6 +1,6 @@
 # ADR 0002: Marca nova no site (Lexend e fundo #01080A)
 
-Status: proposta · Data: 24/11/2026
+Status: proposta · Data: 24/11/2026 · Fonte dos títulos substituída pela [ADR 0003](0003-titulos-em-manrope.md)
 
 ## Contexto
 
