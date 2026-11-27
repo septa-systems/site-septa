@@ -1,5 +1,5 @@
 /* Marca do site da Septa (ADR 0002): fundo escuro, verde principal, azul de apoio.
-   Lexend nos títulos, Inter no texto, Outfit só no nome SEPTA do logo. */
+   Manrope nos títulos (ADR 0003), Inter no texto, Outfit só no nome SEPTA do logo. */
 :root {
   color-scheme: dark;
 
@@ -17,7 +17,7 @@
   --cor-ok: #4ade80;
   --cor-alerta: #fbbf24;
 
-  --fonte-titulo: "Lexend Variable", "Segoe UI", system-ui, sans-serif;
+  --fonte-titulo: "Manrope Variable", "Segoe UI", system-ui, sans-serif;
   --fonte-texto: "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
   --fonte-logo: "Outfit Variable", "Segoe UI", system-ui, sans-serif;
 }

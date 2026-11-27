@@ -69,7 +69,7 @@ Site institucional de **uma página longa** no `modelo-site` (Astro + Cloudflare
 
 - Site **estático**: sem banco e sem login. O formulário **não envia nada para servidor**: monta o texto e abre o WhatsApp.
 - Textos e dados num lugar só (`site.ts`). Trocar o WhatsApp ou um preço é mudar uma linha.
-- Visual do rascunho aprovado: fundo `#01080A`, verde `#2DD4BF`, azul de apoio `#38BDF8`, **Lexend** nos títulos, **Inter** no texto e **Outfit** só no nome SEPTA do logo. Isso muda a marca do manual (ver ADR 0002 na arquitetura).
+- Visual do rascunho aprovado: fundo `#01080A`, verde `#2DD4BF`, azul de apoio `#38BDF8`, **Manrope** nos títulos, **Inter** no texto e **Outfit** só no nome SEPTA do logo. Isso muda a marca do manual (ver ADRs 0002 e 0003 na arquitetura).
 - 3D e animações com JavaScript, carregado só quando precisa (ver ADR 0001). Quem tem "menos movimento" ligado no aparelho vê tudo mais devagar, mas não parado.
 - O que ainda não foi decidido aparece marcado no código (`PENDENTE`) e **não vai para o ar inventado** (CT06).
 

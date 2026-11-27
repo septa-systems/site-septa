@@ -99,6 +99,7 @@ classDiagram
 
 - [ADR 0001: 3D e animações com JavaScript no site da Septa](adr/0001-3d-e-animacoes.md)
 - [ADR 0002: Marca nova no site (Lexend e fundo #01080A)](adr/0002-marca-do-site.md)
+- [ADR 0003: Títulos em Manrope](adr/0003-titulos-em-manrope.md)
 
 ## 10. Riscos
 
